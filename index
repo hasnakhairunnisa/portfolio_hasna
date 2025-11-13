@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hasna Khairunnisa – Data Analyst Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --accent: #4fd1c5;
+      --accent-soft: rgba(79, 209, 197, 0.1);
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --card: #0f172a;
+      --border: #1e293b;
+      --radius-lg: 18px;
+      --radius-xl: 26px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.7);
+      --shadow-chip: 0 8px 20px rgba(15, 23, 42, 0.8);
+      --transition: 200ms ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 40%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 0;
+      margin: 0;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 20px 60px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      font-size: 14px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      padding: 4px 0;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      color: var(--muted);
+      box-shadow: var(--shadow-chip);
+      backdrop-filter: blur(12px);
+    }
+
+    .chip-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(79, 209, 197, 0.9);
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.2fr);
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 48px;
+    }
+
+    .hero-title {
+      font-size: clamp(32px, 5vw, 44px);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+    }
+
+    .hero-title span {
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 20px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 10px 20px;
+      font-size: 14px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform var(--transition), box-shadow var(--transition),
+        background var(--transition), border-color var(--transition);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #22c1c3, #4fd1c5);
+      color: #0f172a;
+      border-color: transparent;
+      box-shadow: 0 18px 40px rgba(34, 193, 195, 0.35);
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 22px 50px rgba(34, 193, 195, 0.45);
+    }
+
+    .btn-outline:hover {
+      background: rgba(15, 23, 42, 0.95);
+      border-color: rgba(148, 163, 184, 0.7);
+    }
+
+    .hero-meta {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .hero-card {
+      position: relative;
+      padding: 20px 18px;
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at top, #1f2937, #020617);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .hero-card h2 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .hero-tagline {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .badge {
+      font-size: 11px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      color: var(--muted);
+    }
+
+    .hero-metric-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .metric {
+      padding: 9px 10px;
+      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(51, 65, 85, 0.9);
+    }
+
+    .metric-label {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .metric-value {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .metric-value span {
+      color: var(--accent);
+    }
+
+    .hero-card-footer {
+      font-size: 11px;
+      color: var(--muted);
+      border-top: 1px dashed rgba(148, 163, 184, 0.4);
+      padding-top: 8px;
+      margin-top: 4px;
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 48px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .text-block {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 720px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .skill-card {
+      background: var(--bg-alt);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 14px 14px 12px;
+    }
+
+    .skill-card h3 {
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .skill-list {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+
+    .project-card {
+      background: var(--bg-alt);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 14px 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: transform var(--transition), box-shadow var(--transition),
+        border-color var(--transition), background var(--transition);
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-soft);
+      border-color: rgba(148, 163, 184, 0.7);
+      background: radial-gradient(circle at top, #111827, #020617);
+    }
+
+    .project-title {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .project-role {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 2px;
+    }
+
+    .tag {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(51, 65, 85, 0.8);
+      color: var(--muted);
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .project-highlight {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .project-links {
+      margin-top: 4px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .project-links a {
+      font-size: 12px;
+      color: var(--accent);
+    }
+
+    /* Contact */
+    .contact-card {
+      background: var(--bg-alt);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 16px 16px 18px;
+      max-width: 520px;
+    }
+
+    .contact-card p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .contact-list {
+      list-style: none;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .contact-list li {
+      margin-bottom: 4px;
+    }
+
+    footer {
+      margin-top: 28px;
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 840px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .nav-links {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav>
+      <div class="logo">HASNA KHAIRUNNISA</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div>
+        <div class="chip">
+          <span class="chip-dot"></span>
+          Senior Data Analyst · E-commerce & Operations
+        </div>
+        <h1 class="hero-title">
+          Turning data into <span>actionable decisions</span>.
+        </h1>
+        <p class="hero-subtitle">
+          I help businesses understand their users, funnels, and operations using
+          analytics, dashboards, and clear storytelling.
+        </p>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#contact" class="btn btn-outline">Contact Me</a>
+          <!-- Replace with your resume link -->
+          <a href="#" class="btn btn-outline">Download Resume</a>
+        </div>
+        <p class="hero-meta">
+          E-commerce · Customer Analytics · Funnel & Retention · BI & Dashboards
+        </p>
+      </div>
+
+      <div class="hero-card">
+        <h2>Selected Impact</h2>
+        <p class="hero-tagline">
+          Analytics projects across annual performance, buyer behaviour,
+          segmentation, and logistics operations.
+        </p>
+        <div class="hero-badges">
+          <div class="badge">E-commerceU Analytics</div>
+          <div class="badge">Customer Segmentation (Python)</div>
+          <div class="badge">Tableau KPI Dashboards</div>
+          <div class="badge">Olist Marketplace Analysis</div>
+        </div>
+        <div class="hero-metric-grid">
+          <div class="metric">
+            <div class="metric-label">Company Performance</div>
+            <div class="metric-value">
+              Annual GMV & user growth analysis <span>2021–2022</span>
+            </div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Customer Analytics</div>
+            <div class="metric-value">
+              RFM & K-Means segmentation <span>(Gold / Silver / Bronze)</span>
+            </div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Funnel & Behaviour</div>
+            <div class="metric-value">
+              App funnel, retention, and market basket analysis
+            </div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Logistics & Ops</div>
+            <div class="metric-value">
+              Warehouse & 3PL performance reporting concept
+            </div>
+          </div>
+        </div>
+        <div class="hero-card-footer">
+          From stagnating GMV and low retention to clear, targeted recommendations
+          for growth and efficiency.
+        </div>
+      </div>
+    </header>
+
+    <section id="about">
+      <h2 class="section-title">About Me</h2>
+      <p class="section-subtitle">
+        Data analyst with strong business context in e-commerce, logistics, and operations.
+      </p>
+      <div class="text-block">
+        I’m Hasna, a Senior Data Analyst who enjoys sitting between data, business,
+        and product. I’ve worked on projects that analyze annual company performance,
+        explain why GMV or retention is dropping, segment customers using Python,
+        and design dashboards that executives and teams actually use.
+        <br /><br />
+        My focus is on turning messy, scattered datasets into narratives that answer
+        concrete questions such as:
+        &ldquo;Why is our GMV dropping?&rdquo;, &ldquo;Which customers should we focus on?&rdquo;,
+        or &ldquo;Where exactly are users dropping in our funnel?&rdquo;
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2 class="section-title">Skills</h2>
+      <p class="section-subtitle">
+        A blend of technical, analytical, and business skills.
+      </p>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>Analytics & Methods</h3>
+          <div class="skill-list">
+            Exploratory analysis, KPI design, funnel &amp; cohort analysis,
+            retention &amp; churn, RFM, segmentation (K-Means), market basket,
+            CLTV thinking, basic forecasting.
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Tools & Technologies</h3>
+          <div class="skill-list">
+            Python (pandas, numpy, scikit-learn, matplotlib/seaborn),
+            SQL/BigQuery, Tableau, Power BI, Excel/Google Sheets.
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Business Domains</h3>
+          <div class="skill-list">
+            E-commerce growth & marketing performance, customer
+            behaviour, product analytics, operational KPIs, logistics
+            & warehouse reporting.
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Communication</h3>
+          <div class="skill-list">
+            Structured problem-solving, slide storytelling, executive
+            summaries, impact/effort prioritization, cross-functional
+            collaboration with marketing, product, and operations.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-subtitle">
+        A selection of projects showcasing business understanding, analytics, and
+        practical recommendations.
+      </p>
+
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <article class="project-card">
+          <div class="project-title">
+            E-CommerceU Annual Performance Analysis (2021–2022)
+          </div>
+          <div class="project-role">
+            Role: Lead Data Analyst · Domain: E-commerce Performance
+          </div>
+          <div class="project-tags">
+            <span class="tag">Funnel & Retention</span>
+            <span class="tag">GMV & AOV</span>
+            <span class="tag">Behaviour Analytics</span>
+          </div>
+          <p class="project-desc">
+            End-to-end analysis of user growth, traffic, funnels, GMV, transactions,
+            and retention to answer: &ldquo;How can we increase GMV by 11% by the end
+            of 2023?&rdquo;
+          </p>
+          <p class="project-highlight">
+            Highlight: Identified stagnating visitors, −44% new users, declining GMV,
+            low retention, and specific funnel drop-offs, then proposed a roadmap of
+            initiatives prioritized by impact vs effort.
+          </p>
+          <div class="project-links">
+            <!-- Replace with actual links -->
+            <a href="#">View Case Study (PDF)</a>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card">
+          <div class="project-title">
+            Buyer Behaviour & Market Basket Analysis
+          </div>
+          <div class="project-role">
+            Role: Data Analyst · Domain: E-commerce, Marketing
+          </div>
+          <div class="project-tags">
+            <span class="tag">Seasonality</span>
+            <span class="tag">Market Basket</span>
+            <span class="tag">Campaign Strategy</span>
+          </div>
+          <p class="project-desc">
+            Analysed seasonal trends, purchase patterns, and product combinations to
+            understand how to increase purchase frequency to 4 orders per year.
+          </p>
+          <p class="project-highlight">
+            Highlight: Found strong twin-date & weekend effects and key product pairs,
+            then recommended bundles, cross-sell, and weekday/Q3 campaigns to smooth
+            seasonality.
+          </p>
+          <div class="project-links">
+            <a href="#">View Deck</a>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project-card">
+          <div class="project-title">
+            Customer Segmentation Using Python (RFM + K-Means)
+          </div>
+          <div class="project-role">
+            Role: Data Analyst · Domain: Marketing Analytics
+          </div>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">RFM</span>
+            <span class="tag">K-Means</span>
+          </div>
+          <p class="project-desc">
+            Built RFM metrics and applied K-Means to cluster users into actionable
+            segments (Gold, Silver, Bronze), moving away from one-size-fits-all
+            marketing.
+          </p>
+          <p class="project-highlight">
+            Highlight: Produced clear segment profiles (behaviour, traffic sources,
+            payment methods, product preferences) and tailored strategies for each
+            group.
+          </p>
+          <div class="project-links">
+            <a href="#">View Segmentation Slides</a>
+            <a href="#">Open Colab Notebook</a>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="project-card">
+          <div class="project-title">
+            EcommerceU KPI Dashboards (Executive, Marketing, Ops)
+          </div>
+          <div class="project-role">
+            Role: BI Developer · Domain: Business Intelligence
+          </div>
+          <div class="project-tags">
+            <span class="tag">Tableau</span>
+            <span class="tag">KPI Design</span>
+            <span class="tag">Stakeholder-Oriented</span>
+          </div>
+          <p class="project-desc">
+            Designed Tableau dashboards for CEO, Marketing Manager, and Product
+            teams, each with tailored KPIs and views of users, transactions, GMV,
+            growth, and funnels.
+          </p>
+          <p class="project-highlight">
+            Highlight: Created an executive snapshot plus analytical and operational
+            views, giving each stakeholder the right level of detail.
+          </p>
+          <div class="project-links">
+            <a href="#">View Tableau Dashboard</a>
+          </div>
+        </article>
+
+        <!-- Project 5 -->
+        <article class="project-card">
+          <div class="project-title">
+            Olist Brazilian E-Commerce Data Analysis
+          </div>
+          <div class="project-role">
+            Role: Data Analyst · Domain: Marketplace & Retention
+          </div>
+          <div class="project-tags">
+            <span class="tag">SQL & Python</span>
+            <span class="tag">User Segmentation</span>
+            <span class="tag">Retention</span>
+          </div>
+          <p class="project-desc">
+            Analysed Olist’s 2018 dataset to understand why retention was as low as
+            0.3% and how to move it towards 15%, focusing on delivery, freight value,
+            price, and review scores.
+          </p>
+          <p class="project-highlight">
+            Highlight: Developed four customer clusters (Emerald, Sapphire, Diamond,
+            Amethyst) and crafted both cluster-specific and general strategies to
+            improve user loyalty.
+          </p>
+          <div class="project-links">
+            <a href="#">View Case Study</a>
+            <a href="#">View Dashboard</a>
+          </div>
+        </article>
+
+        <!-- Project 6 (Optional) -->
+        <article class="project-card">
+          <div class="project-title">
+            Warehouse & Logistics Performance – RBB 2025 Case Study
+          </div>
+          <div class="project-role">
+            Role: Data Analyst · Domain: 3PL & Operations
+          </div>
+          <div class="project-tags">
+            <span class="tag">Operational KPIs</span>
+            <span class="tag">Logistics</span>
+            <span class="tag">Strategy</span>
+          </div>
+          <p class="project-desc">
+            Built a reporting and strategy concept for a 3PL company to recover from
+            losses by improving warehouse processes, diversifying clients, and
+            transforming costs and organization.
+          </p>
+          <p class="project-highlight">
+            Highlight: Translated business challenges into a strategic plan across
+            operational excellence, commercial growth, and financial transformation.
+          </p>
+          <div class="project-links">
+            <a href="#">View Study</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <p class="section-subtitle">
+        Open to data analyst / analytics roles and interesting data problems.
+      </p>
+      <div class="contact-card">
+        <p>
+          If you’d like to talk about data, dashboards, or opportunities, feel
+          free to reach out:
+        </p>
+        <ul class="contact-list">
+          <li>Email: <a href="mailto:your.email@email.com">your.email@email.com</a></li>
+          <li>LinkedIn: <a href="#">Your LinkedIn URL</a></li>
+          <li>Tableau Public: <a href="#">Your Tableau Profile</a></li>
+          <li>GitHub / Colab: <a href="#">Your GitHub / Colab Links</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Hasna Khairunnisa · Data Analyst Portfolio
+    </footer>
+  </div>
+
+  <script>
+    // Set year dynamically
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
